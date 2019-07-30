@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Site - templates </title>
+       <link rel="stylesheet" href="{% static 'style.css' %}">
+   </head>
+   <body>
+      <heder>
+      <nav>
+         <ul>
+            <li>Главная</li>
+            <li>Новости</li>
+            <li>Каталог</li>
+            <li>Галерея</li>
+            <li>Контакты</li>
+         </ul>
+      </nav>
+      </heder>
+      <div>
+          {% for slider in sl %}
+              <div class="sliders" style="width:300px;float:left;">
+          {{ slider.title }}
+         <a href="{{ slider.href }}"><img src="{{ slider.image.url }}" width="300"/></a><a href="{{ slider.href }}">{{ slider.description }}</a>
+         </div>
+          {% endfor %}
+      </div>
+          <div class="row" style="width:100%; float: left">
+              {% for news in ns %}
+             <div  style="width: 33%; float:left">
+                <h3>{{news.title}}</h3>
+                <p><img src="{{ news.image.url }}" alt="" style="width: 300px;"></p>
+                <a href="{{news.get_absolute_url}}">{{news.description}}</a>
+             </div>
+              {% endfor %}
+          </div>
+      <div>
+         <div class="paginate" style="width:100%;float:left;">
+            <div class="single_pagination">
+              {% if ns.has_previous %}
+              <a href="?page={{ ns.previous_page_number }}">Назад</a>
+              {% endif %}
+              <span>{{ ns.number }} / {{ ns.num_pages }}</span>
+              {% if ns.has_next %}
+              <a href="?page={{ ns.next_page_number }}" >Вперед</a>
+              {% endif %}
+            </div>
+         </div>
+      </div>
+      <div class="row" style="width:100%; float: left">
+              {% for product in pr %}
+             <div  style="width: 33%; float:left">
+                <h3>{{product.title}}</h3>
+                <p><img src="{{ product.image.url }}" alt="" style="width: 300px;"></p>
+{#                <a href="{{product.get_absolute_url}}">{{product.description}}</a>#}
+                <div style="background: red; color: black">
+                    <h3>{{ product.price }}</h3>
+                </div>
+             </div>
+              {% endfor %}
+      </div>
+   </body>
+</html>
+

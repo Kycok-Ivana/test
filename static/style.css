@@ -1,0 +1,7 @@
+@font-face{
+    font-family: futurama;
+    src: url("futurama.ttf");
+}
+*{
+    font-family: futurama;
+}
