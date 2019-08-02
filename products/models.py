@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Products(models.Model):
     title = models.CharField(max_length=30)
+    slug = models.SlugField(unique=True, null=True)
     description = models.TextField(max_length=150)
     content = models.TextField()
     image = models.ImageField(upload_to='product')
@@ -17,7 +18,7 @@ class Products(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return "/%s/" % (self.id)
+        return "/products/%s/" % (self.id)
 
     class Meta:
         verbose_name = 'Товар'

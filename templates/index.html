@@ -10,7 +10,7 @@
        <link rel="stylesheet" href="{% static 'style.css' %}">
    </head>
    <body>
-      <heder>
+      <header>
       <nav>
          <ul>
             <li>Главная</li>
@@ -20,7 +20,10 @@
             <li>Контакты</li>
          </ul>
       </nav>
-      </heder>
+          <div class="cart">
+              Корзина: 0
+          </div>
+      </header>
       <div>
           {% for slider in sl %}
               <div class="sliders" style="width:300px;float:left;">
@@ -53,14 +56,16 @@
       </div>
       <div class="row" style="width:100%; float: left">
               {% for product in pr %}
-             <div  style="width: 33%; float:left">
-                <h3>{{product.title}}</h3>
-                <p><img src="{{ product.image.url }}" alt="" style="width: 300px;"></p>
-{#                <a href="{{product.get_absolute_url}}">{{product.description}}</a>#}
-                <div style="background: red; color: black">
-                    <h3>{{ product.price }}</h3>
-                </div>
-             </div>
+                  <form action="/" method="post">
+                     <div  style="width: 33%; float:left">
+                        <p><img src="{{ product.image.url }}" alt="" style="width: 300px;"></p>
+                        <a href="{{product.get_absolute_url}}">{{product.title}}</a>
+                        <div style="color: red">
+                            <h3>{{ product.price }}$</h3>
+                        </div>
+                         <button type="submit">Купить</button>
+                     </div>
+                  </form>
               {% endfor %}
       </div>
    </body>

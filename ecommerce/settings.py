@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'slider',
     'news',
     'products',
+    'contacts',
+    'photologue',
+    'sortedm2m',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +138,15 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'images')
 
 MEDIA_ROOT = MEDIA_DIR
 
+
+
+EMAIL_HOST_PASSWORD = 'Vorobyov_1999'
+EMAIL_HOST_USER = 'ivabyov2@gmail.com'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+
+
+SITE_ID = 1

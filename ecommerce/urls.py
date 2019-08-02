@@ -19,10 +19,16 @@ from django.conf.urls.static import static
 from django.conf import settings
 from slider.views import by_slider
 from news.views import by_news, by_news_single
+from products.views import by_product_single
+from contacts.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', by_news),
     path('<int:id>/', by_news_single, name='single'),
+    path('products/<int:id>/', by_product_single, name='single_pr'),
+    path('contact/', contactform, name='contact'),
+    path('thanks/', thanks, name='thanks'),
+    path('photologue/', include('photologue.urls', namespace='photologue')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
